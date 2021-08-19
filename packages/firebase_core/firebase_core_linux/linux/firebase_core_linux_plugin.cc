@@ -6,6 +6,7 @@
 #include <cstring>
 
 #include "firebase/app.h"
+#include "firebase_core_linux/firebase_core_common.h"
 
 #define FIREBASE_CORE_LINUX_PLUGIN(obj) \
   (G_TYPE_CHECK_INSTANCE_CAST((obj), firebase_core_linux_plugin_get_type(), \
@@ -25,9 +26,9 @@ static void firebase_core_linux_plugin_handle_method_call(
 
   const gchar* method = fl_method_call_get_name(method_call);
 
-  if (strcmp(method, "Firebase#initializeCore") == 0) {
-    FirebaseApp::getApps()
-    g_autofree gchar *version = g_strdup_printf("Linux %s", uname_data.version);
+  if (strcmp(method, FIREBASE_INITIALIZE_CORE) == 0) {
+    // FirebaseApp::getApps()
+    g_autofree gchar *version = g_strdup_printf("Linux");
     g_autoptr(FlValue) result = fl_value_new_string(version);
     response = FL_METHOD_RESPONSE(fl_method_success_response_new(result));
   } else {
@@ -60,7 +61,7 @@ void firebase_core_linux_plugin_register_with_registrar(FlPluginRegistrar* regis
   g_autoptr(FlStandardMethodCodec) codec = fl_standard_method_codec_new();
   g_autoptr(FlMethodChannel) channel =
       fl_method_channel_new(fl_plugin_registrar_get_messenger(registrar),
-                            "plugins.flutter.io/firebase_core",
+                            FIREBASE_CORE_METHOD_CHANNEL_NAME,
                             FL_METHOD_CODEC(codec));
   fl_method_channel_set_method_call_handler(channel, method_call_cb,
                                             g_object_ref(plugin),
