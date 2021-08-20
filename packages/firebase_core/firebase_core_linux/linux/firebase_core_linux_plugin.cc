@@ -25,12 +25,11 @@ static void firebase_core_linux_plugin_handle_method_call(
   g_autoptr(FlMethodResponse) response = nullptr;
 
   const gchar* method = fl_method_call_get_name(method_call);
+  FlValue* args = fl_method_call_get_args(method_call);
 
   if (strcmp(method, FIREBASE_INITIALIZE_CORE) == 0) {
-    // FirebaseApp::getApps()
-    g_autofree gchar *version = g_strdup_printf("Linux");
-    g_autoptr(FlValue) result = fl_value_new_string(version);
-    response = FL_METHOD_RESPONSE(fl_method_success_response_new(result));
+    FlValue* initResult = firebase_initializeCore(args);
+    response = FL_METHOD_RESPONSE(fl_method_success_response_new(initResult));
   } else {
     response = FL_METHOD_RESPONSE(fl_method_not_implemented_response_new());
   }
