@@ -30,6 +30,12 @@ static void firebase_core_linux_plugin_handle_method_call(
   if (strcmp(method, FIREBASE_INITIALIZE_CORE) == 0) {
     FlValue* initResult = firebase_initializeCore(args);
     response = FL_METHOD_RESPONSE(fl_method_success_response_new(initResult));
+  } else if (strcmp(method, FIREBASE_INITIALIZE_APP) == 0) {
+    FlValue* initResult = firebase_initializeApp(args);
+    response = FL_METHOD_RESPONSE(fl_method_success_response_new(initResult));
+  } else if (strcmp(method, FIREBASEAPP_DELETE) == 0) {
+    firebaseApp_delete(args);
+    response = FL_METHOD_RESPONSE(fl_method_success_response_new(fl_value_new_null()));
   } else {
     response = FL_METHOD_RESPONSE(fl_method_not_implemented_response_new());
   }

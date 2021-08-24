@@ -11,3 +11,4 @@ cp ~/firebase-cpp-sdk/build/installations/libfirebase_installations.a ~/flutterf
 cp ~/firebase-cpp-sdk/build/messaging/libfirebase_messaging.a ~/flutterfire/packages/firebase_core/firebase_core_linux/linux/lib/
 cp ~/firebase-cpp-sdk/build/remote_config/libfirebase_remote_config.a ~/flutterfire/packages/firebase_core/firebase_core_linux/linux/lib/
 cp ~/firebase-cpp-sdk/build/storage/libfirebase_storage.a ~/flutterfire/packages/firebase_core/firebase_core_linux/linux/lib/
+cp ~/firebase-cpp-sdk/build/external/src/flatbuffers-build/libflatbuffers.a ~/flutterfire/packages/firebase_core/firebase_core_linux/linux/lib/

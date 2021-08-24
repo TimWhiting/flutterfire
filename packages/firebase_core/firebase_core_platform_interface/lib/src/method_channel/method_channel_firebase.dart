@@ -84,12 +84,13 @@ class MethodChannelFirebase extends FirebasePlatform {
     if (name == null) {
       MethodChannelFirebaseApp? defaultApp =
           appInstances[defaultFirebaseAppName];
+      defaultApp ??= appInstances[defaultCppFirebaseAppName];
 
       if (defaultApp == null) {
         throw coreNotInitialized();
       }
 
-      return appInstances[defaultFirebaseAppName]!;
+      return defaultApp;
     }
 
     assert(
@@ -118,6 +119,11 @@ class MethodChannelFirebase extends FirebasePlatform {
   FirebaseAppPlatform app([String name = defaultFirebaseAppName]) {
     if (appInstances.containsKey(name)) {
       return appInstances[name]!;
+    }
+    if (name == defaultFirebaseAppName) {
+      if (appInstances.containsKey(defaultCppFirebaseAppName)) {
+        return appInstances[defaultCppFirebaseAppName]!;
+      }
     }
 
     throw noAppExists(name);

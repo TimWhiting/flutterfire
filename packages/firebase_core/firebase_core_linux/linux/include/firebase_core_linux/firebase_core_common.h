@@ -32,9 +32,8 @@
 #define FLUTTER_PLUGIN_EXPORT
 #endif
 
-
 FlValue* firebase_initializeCore(FlValue* params);
-void firebase_initializeApp(FlValue* params);
+FlValue* firebase_initializeApp(FlValue* params);
 void firebaseApp_delete(FlValue* params);
 void firebaseApp_setAutomaticDataCollectionEnabled(FlValue* params);
 void firebaseApp_setAutomaticResourceManagementEnabled(FlValue* params);
