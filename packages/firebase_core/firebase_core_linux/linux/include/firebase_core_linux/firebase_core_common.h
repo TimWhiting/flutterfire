@@ -33,10 +33,9 @@
 #endif
 
 FlValue* firebase_initializeCore(FlValue* params);
-FlValue* firebase_initializeApp(FlValue* params);
+void firebase_initializeApp(FlValue* params);
 void firebaseApp_delete(FlValue* params);
 void firebaseApp_setAutomaticDataCollectionEnabled(FlValue* params);
 void firebaseApp_setAutomaticResourceManagementEnabled(FlValue* params);
-
 
 #endif  // FLUTTER_PLUGIN_FIREBASE_CORE_COMMON_H_

@@ -43,9 +43,9 @@ FlValue* firebase_initializeCore(FlValue* params) {
     auto appMap = firebaseAppToMap(app);
     fl_value_append(list, appMap);
   }
-
   return list;
 }
+
 FlValue* firebase_initializeApp(FlValue* params){
   auto options = fl_value_lookup_string(params, KEY_OPTIONS);
   auto appName = fl_value_get_string(fl_value_lookup_string(params, KEY_APP_NAME));
