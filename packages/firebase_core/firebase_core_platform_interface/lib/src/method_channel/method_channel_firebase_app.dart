@@ -53,7 +53,7 @@ class MethodChannelFirebaseApp extends FirebaseAppPlatform {
     );
 
     MethodChannelFirebase.appInstances.remove(name);
-    FirebasePluginPlatform._constantsForPluginApps.remove(name);
+    FirebasePluginPlatform.constantsForPluginApps.remove(name);
     _isDeleted = true;
   }
 

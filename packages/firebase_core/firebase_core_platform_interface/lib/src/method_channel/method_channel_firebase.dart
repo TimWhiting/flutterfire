@@ -50,7 +50,7 @@ class MethodChannelFirebase extends FirebasePlatform {
         methodChannelFirebaseApp;
 
     FirebasePluginPlatform
-            ._constantsForPluginApps[methodChannelFirebaseApp.name] =
+            .constantsForPluginApps[methodChannelFirebaseApp.name] =
         map['pluginConstants'];
   }
 
